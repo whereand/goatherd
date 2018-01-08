@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  
+  <!-- 提供GUI工具,可能会用来标记这个特定的web应用的名称 -->
+  <display-name>goatherd</display-name>
+  
+   <!-- 欢迎页:
+                  用于当用户在url中输入工程名称或者输入web容器url(如http://localhost:8080/)时直接跳转的页面.
+    -->
+   <welcome-file-list>
+     <welcome-file>/firstPage.html</welcome-file>
+   </welcome-file-list>
+   
+   <!--配置前端控制器-->
+    <servlet>
+        <servlet-name>mvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:config/spring-*.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!--配置访问路径-->
+    <servlet-mapping>
+        <servlet-name>mvc</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd"> 
+<mapper namespace="goatherd.dao.UserDao">
+  <select id="selectById" parameterType="java.math.BigInteger" resultType="java.lang.String">
+    SELECT NAME
+    FROM user_info
+    WHERE id = #{id} 
+  </select>
+</mapper>

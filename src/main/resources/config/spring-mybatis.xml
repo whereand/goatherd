@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+	       http://www.springframework.org/schema/beans
+		   http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		   http://www.springframework.org/schema/context
+		   http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+    
+
+    <!-- 引入jdbc.properties文件 -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:config/jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- 数据库配置  -->
+    <bean id="dbcp" class="org.apache.commons.dbcp.BasicDataSource">
+      <!-- 初级配置 -->
+      <property name="driverClassName" value="${my.driverClassName}"/>
+      <property name="url" value="${my.url}"/>
+      <property name="username" value="${my.username}"/>
+      <property name="password" value="${my.password}"/>
+    </bean>    
+    
+    <!-- session工厂(映射器) -->
+	<bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean">
+	  <!-- 注入DataSource -->
+	  <property name="dataSource" ref="dbcp"></property>
+	  <!-- 注入SQL语句(映射文件的位置) -->
+	  <property name="mapperLocations" value="classpath:mapper/**/*.xml"></property>
+	</bean>
+    
+    <!-- 扫描器 -->
+	<bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	    <!-- 指定mapper接口 -->
+		<property name="basePackage" value="goatherd.**.dao"></property>
+		<!-- 指定sqlSession资源 -->
+		<property name="sqlSessionFactoryBeanName" value="ssf" />
+	</bean>
+</beans>
