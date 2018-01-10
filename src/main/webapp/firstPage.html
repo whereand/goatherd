@@ -4,16 +4,28 @@
   <meta charset="UTF-8">
   <title>云笔记</title>
   <link rel="stylesheet" type="text/css" href="css/firstPage.css" />
+  <script src="/JQuery/jquery-1.12.0.min.js"></script>
+  <script type="text/javascript">
+      $(function(){
+    	  $("#firstPage_login").click(function(){
+    	      var account = $(".firstPage_account").val();
+    	      var password = $(".firstPage_password").val();
+    	      console.log("账号:"+account);
+    	      console.log("密码:"+password);  
+    	  });
+      });      
+  </script>
 </head>
+
 <body>
   <div class="long_in">
     <div>
-      <input class="" name="" placeholder="账号"/> 
+      <input class="firstPage_account" name="" placeholder="账号"/> 
       <span class="" style="color:red">(6-16位字母、数字、*)</span>
     </div>
     <br>
     <div>
-      <input class="" name="" placeholder="密码" type="password"/>
+      <input class="firstPage_password" name="" placeholder="密码" type="password"/>
       <span class="" style="color:red">(6-16位字母、数字、*)</span>
     </div>
     <br>
@@ -22,7 +34,7 @@
       <img src="createImg.do" onclick="this.setAttribute('src','createImg.do?x='+Math.random())" alt="验证码" title="点击更换" width="100" height="32" class="passcode" style="height: 43px; cursor: pointer;" />
     </div> -->
     <div>
-      <input type="button" id="" class="" value="登录" style="">
+      <input type="button" id="firstPage_login" class="" value="登录" style="">
     </div>
   </div> 
 </body>
