@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import goatherd.service.firstPageService.LoginService;
-import utils.JsonResult;
-import utils.VerificationCode;
+import goatherd.utils.VerificationCode;
 
 @Controller("loginController")
 @RequestMapping("/login")

@@ -35,7 +35,7 @@
     	    			  $("#code_message").text("验证码错误");
     	    		  }else if(result == 2){
     	    			  //账号或密码错误
-    	    			  console.log("账号或密码错误");
+    	    			  $("#code_message").text("账号或密码错误");
     	    		  }
     	    	  },
     	    	  error:function(){}
@@ -60,7 +60,7 @@
               <div>
                 <div class="field field-icon-right">
                   <input class="input input-big" name="accountNum" placeholder="账号" id="account"/> 
-                  <span class="icon icon-user margin-small" style="" id="account_message"></span>
+                  <span class="icon icon-user margin-small" style=""></span>
                 </div>
               </div>
               <br>
@@ -83,8 +83,8 @@
           <div>
             <input type="button" id="login" class="button button-block bg-main text-big input-big" value="登录" style="margin-bottom: 10px;">
           </div>
-           <a href="login/register.do"><span style="color: red;">注册</span></a>
-           <a href="login/retrievePassword.do"><span style="color: red;">找回密码</span></a>
+           <a href="login/register.do" id="login_regist"><span style="color: red;">注册</span></a>
+           <a href="login/retrievePassword.do" id="login_retrieve"><span style="color: red;">找回密码</span></a>
         </div>
       </div>
     </div>

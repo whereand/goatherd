@@ -1,4 +1,4 @@
-package utils;
+package goatherd.utils;
 
 import java.io.Serializable;
 /**

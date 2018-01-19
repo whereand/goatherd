@@ -1,4 +1,4 @@
-package utils;
+package goatherd.utils;
 /**
  * 生成验证码
  * @author 薛宗艳
