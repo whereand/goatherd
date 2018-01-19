@@ -3,38 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <title>云笔记</title>
-  <link rel="stylesheet" type="text/css" href="css/firstPage.css" />
-  <script src="/JQuery/jquery-1.12.0.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/admin.css" />
+  <link rel="stylesheet" type="text/css" href="css/pintuer.css" />
+  <script src="JQuery/jquery.js"></script>
   <script type="text/javascript">
       $(function(){
-    	  $("#firstPage_login").click(function(){
-    	      var account = $(".firstPage_account").val();
-    	      var password = $(".firstPage_password").val();
-    	      console.log("账号:"+account);
-    	      console.log("密码:"+password);  
+    	  $("#login").click(function(){
+    	      var account = $("#account").val();
+    	      var password = $("#password").val();
+    	      var verificationCode = $("#verification_code").val();
+    	      if(account =="" || account==undefined){
+    	    	  $("#code_message").text("请输入账号");
+    	    	  return;
+    	      }
+    	      if(password =="" || password==undefined){
+    	    	  $("#code_message").text("请输入密码");
+    	    	  return;
+    	      }
+    	      if(verificationCode == "" || verificationCode == undefined){
+    	    	  $("#code_message").text("请输入验证码");
+    	    	  return;
+    	      }
+    	      $.ajax({
+    	    	  url:"login/loginButton.do",
+    	    	  type:"post",
+    	    	  data:{"account":account,"password":password,"verificationCode":verificationCode},
+    	    	  dataType:"json",
+    	    	  success:function(result){
+    	    		  if(result == 1){   	    			  
+    	    			  //验证码错误
+    	    			  $("#code_message").text("验证码错误");
+    	    		  }else if(result == 2){
+    	    			  //账号或密码错误
+    	    			  console.log("账号或密码错误");
+    	    		  }
+    	    	  },
+    	    	  error:function(){}
+    	      });
     	  });
       });      
   </script>
 </head>
-
 <body>
-  <div class="long_in">
-    <div>
-      <input class="firstPage_account" name="" placeholder="账号"/> 
-      <span class="" style="color:red">(6-16位字母、数字、*)</span>
+  <div class="bg"></div>
+  <div class="container">
+    <div class="line bouncein">
+      <div class="xs6 xm4 xs3-move xm4-move">
+        <div style="height: 150px;"></div>
+        <div class="media media-y margin-big-bottom"></div>
+        <div class="panel loginbox">
+          <div class="text-center margin-big padding-big-top">
+            <h1>登录</h1>
+          </div>
+          <div class="panel-body" style="padding: 30px; padding-bottom: 10px; padding-top: 10px;">
+            <form id="loginForm">
+              <div>
+                <div class="field field-icon-right">
+                  <input class="input input-big" name="accountNum" placeholder="账号" id="account"/> 
+                  <span class="icon icon-user margin-small" style="" id="account_message"></span>
+                </div>
+              </div>
+              <br>
+              <div>
+                <div class="field field-icon-right">
+                  <input class="input input-big" name="password" placeholder="密码" type="password" id="password"/> 
+                  <span class="icon icon-key margin-small" id="password_message"></span>
+                </div>
+              </div>
+              <br>
+              <div>
+                <div class="field">
+                  <input class="input input-big" name="yzm" placeholder="验证码" id="verification_code"/> 
+                  <img src="login/createImg.do" onclick="this.setAttribute('src','login/createImg.do?x='+Math.random())" alt="验证码" title="点击更换" width="100" height="32" class="passcode" style="height: 43px; cursor: pointer;"/>
+                </div>
+              </div>
+            </form>
+            <span style="color: red; display: block; height: 20px;" id="code_message"></span>
+          </div>
+          <div>
+            <input type="button" id="login" class="button button-block bg-main text-big input-big" value="登录" style="margin-bottom: 10px;">
+          </div>
+           <a href="login/register.do"><span style="color: red;">注册</span></a>
+           <a href="login/retrievePassword.do"><span style="color: red;">找回密码</span></a>
+        </div>
+      </div>
     </div>
-    <br>
-    <div>
-      <input class="firstPage_password" name="" placeholder="密码" type="password"/>
-      <span class="" style="color:red">(6-16位字母、数字、*)</span>
-    </div>
-    <br>
-    <!-- <div>
-      <input class="input input-big" name="yzm" placeholder="验证码" onkeypress="sub(event)" />
-      <img src="createImg.do" onclick="this.setAttribute('src','createImg.do?x='+Math.random())" alt="验证码" title="点击更换" width="100" height="32" class="passcode" style="height: 43px; cursor: pointer;" />
-    </div> -->
-    <div>
-      <input type="button" id="firstPage_login" class="" value="登录" style="">
-    </div>
-  </div> 
+  </div>
 </body>
+</html>
