@@ -1,9 +1,4 @@
 package goatherd.utils;
-/**
- * 生成验证码
- * @author 薛宗艳
- *
- */
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -12,22 +7,22 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-public class VerificationCode {
-	
+/**
+ * 
+ * @author 薛宗艳
+ * @date 2018年1月31日
+ */
+public class VerificationCode {	
     //图片高度
 	private static final int IMG_WIGHT = 100;
 	//图片宽度
 	private static final int IMG_HEIGHT = 32;
-	//验证码长度
-	private static final int CODE_LENGTH = 4;
 	//
 	private Random random = new Random();
 	//定义有那些字体
 	private String[] fontNames = {"宋体","黑体","微软雅黑"};
 	//定义有那些随机字符
 	private String codes = "0123456789abcdABCD";
-	//生成背景色
-	private Color bgColor = new Color(250,250,250);
 	//用于gettext方法,获得生成的验证码
 	private String text;
 	

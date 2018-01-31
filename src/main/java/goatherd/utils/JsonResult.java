@@ -4,18 +4,12 @@ import java.io.Serializable;
 /**
  * 
  * @author 薛宗艳
- *
+ * @date 2018年1月31日
  */
 public class JsonResult implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1980308374410013618L;
-	//服务器返回的消息
     private String message;
-    //状态码  0:成功,其他表示失败
     private String state;
-    //服务器返回的数据
     private Object data;
 	public JsonResult() {
 		super();
@@ -82,6 +76,5 @@ public class JsonResult implements Serializable{
 	@Override
 	public String toString() {
 		return "JsonResult [message=" + message + ", state=" + state + ", data=" + data + "]";
-	}
-    
+	}    
 }
