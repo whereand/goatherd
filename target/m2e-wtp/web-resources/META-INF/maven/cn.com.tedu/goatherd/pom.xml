@@ -27,7 +27,7 @@
       <dependency>
           <groupId>junit</groupId>
           <artifactId>junit</artifactId>
-          <version>4.12</version>
+          <version>4.13.1</version>
       </dependency>
       
       <!-- 这个jar文件包含Spring对JDBC数据访问进行封装的所有类 -->
